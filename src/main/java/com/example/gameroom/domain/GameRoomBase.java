@@ -1,9 +1,40 @@
 package com.example.gameroom.domain;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class GameRoomBase {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="game_room_base_id")
+    private long id;
+    private String game_room_id;
+    @Enumerated(EnumType.STRING)
+    private GameType gameType;
+    @Column(name="max_player")
+    private int maxPlayer = 5 ;
+    @Column(name="maximum_turn")
+    private int turns = 4;
+    @Column(name="turn_time_limit")
+    private int timeLimit = 300; //초로 환산해서 설정
+    @Column(name="init_seed_money")
+    private long seedMoney = 10_000_000;
+    @Column(name="num_of_companies")
+    private int companies;
+    private boolean is_active;
+
+    public enum GameType {
+        Basic,
+        Contest
+    }
+
 }
-
-
-
-
-//id 게임방 id 게임룰 보상id 게임 종류 최대 플레이어 수 턴수 턴 당 제한 시간 플레이어당 시드 머니 게임 당 기업 수 룰 적용 여부

@@ -26,6 +26,9 @@ public class GameRooms {
     private LocalDateTime endTime;
     @Column(name="current_turn")
     private int turn;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "game_room_base_id")
+    private GameRoomBase gameRoomBase;
 
     public enum GameStatus {
         BEFORE_START,
@@ -35,11 +38,12 @@ public class GameRooms {
 
 
     @Builder
-    public GameRooms(GameStatus status, LocalDateTime endTime, int turn) {
+    public GameRooms(GameStatus status, LocalDateTime endTime, int turn, GameRoomBase gameRoomBase) {
         this.id = UUID.randomUUID().toString().substring(0,5);
         this.status = status;
         this.endTime = endTime;
         this.turn = turn;
+        this.gameRoomBase = gameRoomBase;
     }
 
 }
