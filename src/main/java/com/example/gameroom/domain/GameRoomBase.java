@@ -16,7 +16,7 @@ public class GameRoomBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="game_room_base_id")
-    private long id;
+    private Long id;
     private String game_room_id;
     @Enumerated(EnumType.STRING)
     private GameType gameType;
