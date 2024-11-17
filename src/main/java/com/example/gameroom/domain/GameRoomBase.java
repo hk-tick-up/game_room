@@ -32,6 +32,7 @@ public class GameRoomBase {
     private int companies;
     private boolean is_active;
 
+
     public enum GameType {
         Basic,
         Contest
