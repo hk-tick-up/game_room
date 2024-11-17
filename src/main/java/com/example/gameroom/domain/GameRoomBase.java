@@ -21,7 +21,7 @@ public class GameRoomBase {
     @Enumerated(EnumType.STRING)
     private GameType gameType;
     @Column(name="max_player")
-    private int maxPlayer = 5 ;
+    private int maxPlayer;
     @Column(name="maximum_turn")
     private int turns = 4;
     @Column(name="turn_time_limit")
