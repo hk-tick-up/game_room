@@ -17,10 +17,10 @@ public class GameRoomsServiceImpl implements GameRoomsService{
     @Autowired
     private GameRoomBaseRepository gameRoomBaseRepository;
 
-    public GameRooms createGameRoom(GameRoomsRequest request) {
-//        if (request.gameType() == GameRoomBase.GameType.Contest && !request.userRole().equals("ADMIN")) {
-//            throw new Exception("Contest 게임 방은 관리자만 생성할 수 있습니다.");
-//        }
+    public GameRooms createGameRoom(GameRoomsRequest request) throws Exception {
+        if (request.gameType() == GameRoomBase.GameType.Contest && !request.userRole().equals("ADMIN")) {
+            throw new Exception("Contest 게임 방은 관리자만 생성할 수 있습니다.");
+        }
 
         GameRoomBase gameRoomBase = gameRoomBaseRepository.findByGameType(request.gameType());
 

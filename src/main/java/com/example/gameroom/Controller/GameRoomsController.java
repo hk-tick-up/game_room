@@ -18,11 +18,11 @@ public class GameRoomsController {
 
     @PostMapping
     public ResponseEntity<?> createGameRoom(@RequestBody GameRoomsRequest request){
-//        try {
+        try {
             GameRooms newGameRoom = gameRoomsService.createGameRoom(request);
             return ResponseEntity.ok(newGameRoom);
-//        } catch (Exception e){
-//            return ResponseEntity.badRequest().body("방을 생성할 수 없습니다.");
-//        }
+        } catch (Exception e){
+            return ResponseEntity.badRequest().body("방을 생성할 수 없습니다.");
+        }
     }
 }
