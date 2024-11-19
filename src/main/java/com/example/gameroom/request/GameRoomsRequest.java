@@ -11,8 +11,10 @@ public record GameRoomsRequest(
         String userRole
 ) {
     public GameRooms toEntity(GameRoomBase gameRoomBase) {
+        UUID uuid = UUID.randomUUID();
+        String randomCode = uuid.toString().substring(0,5).toUpperCase();
         return GameRooms.builder()
-                .id(UUID.randomUUID().toString().substring(0,5))
+                .id(randomCode)
                 .status(GameRooms.GameStatus.BEFORE_START)
                 .endTime( LocalDateTime.now().plusMinutes(
                             (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))

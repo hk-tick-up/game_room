@@ -17,20 +17,21 @@ public class GameRoomBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="game_room_base_id")
     private Long id;
-    private String game_room_id;
+//    private String game_room_id;
     @Enumerated(EnumType.STRING)
     private GameType gameType;
     @Column(name="max_player")
     private int maxPlayer;
     @Column(name="maximum_turn")
-    private int turns = 4;
+    private int turns;
     @Column(name="turn_time_limit")
-    private int timeLimit = 300; //초로 환산해서 설정
+    private int timeLimit; //초로 환산해서 설정
     @Column(name="init_seed_money")
-    private long seedMoney = 10_000_000;
+    private long seedMoney;
     @Column(name="num_of_companies")
     private int companies;
     private boolean is_active;
+
 
 
     public enum GameType {

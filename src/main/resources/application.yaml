@@ -1,4 +1,7 @@
 spring:
+  jackson:
+    mapper:
+      accept-case-insensitive-enums: true
   h2:
     console:
       enabled: true

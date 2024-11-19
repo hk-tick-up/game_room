@@ -36,14 +36,14 @@ public class GameRooms {
         COMPLETED
     }
 
-
-    @Builder
-    public GameRooms(GameStatus status, LocalDateTime endTime, int turn, GameRoomBase gameRoomBase) {
-        this.id = UUID.randomUUID().toString().substring(0,5);
-        this.status = status;
-        this.endTime = endTime;
-        this.turn = turn;
-        this.gameRoomBase = gameRoomBase;
-    }
+//    @Builder
+//    public GameRooms(GameStatus status, LocalDateTime endTime, int turn, GameRoomBase gameRoomBase) {
+//        UUID uuid = UUID.randomUUID();
+//        this.id = uuid.toString().substring(0,5).toUpperCase();
+//        this.status = status;
+//        this.endTime = endTime;
+//        this.turn = turn;
+//        this.gameRoomBase = gameRoomBase;
+//    }
 
 }
