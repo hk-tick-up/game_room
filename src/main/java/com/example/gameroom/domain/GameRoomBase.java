@@ -34,6 +34,7 @@ public class GameRoomBase {
 
 
     public enum GameType {
+
         Basic,
         Contest
     }
