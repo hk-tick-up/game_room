@@ -36,6 +36,11 @@ public class GameRoomsServiceImpl implements GameRoomsService{
 //    private 방 join
     public GameRooms joinPrivateGameRoom(String gameRoomId) throws Exception {
         GameRooms gameRoom = gameRoomsRepository.findById(gameRoomId).get();
+
+        if(gameRoom.is_public()) {
+            throw new Exception("해당 게임방에는 입장할 수 없습니다.");
+        }
+
         gameRoom.incrementParticipants();
         return gameRoomsRepository.save(gameRoom);
     }

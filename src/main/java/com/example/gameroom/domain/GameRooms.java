@@ -27,8 +27,6 @@ public class GameRooms {
     private GameStatus status;
     @Column(name="end_time")
     private LocalDateTime endTime;
-    @Column(name="current_turn")
-    private int turn;
     private boolean is_public;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_room_base_id")

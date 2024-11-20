@@ -19,7 +19,6 @@ public record CreateGameRoomsRequest(
                 .status(GameRooms.GameStatus.BEFORE_START)
                 .endTime( LocalDateTime.now().plusMinutes(
                             (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))
-                .turn(0)
                 .gameRoomBase(gameRoomBase)
                 .is_public(true)
                 .build();
@@ -33,7 +32,6 @@ public record CreateGameRoomsRequest(
                 .status(GameRooms.GameStatus.BEFORE_START)
                 .endTime( LocalDateTime.now().plusMinutes(
                         (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))
-                .turn(0)
                 .gameRoomBase(gameRoomBase)
                 .is_public(false)
                 .build();
