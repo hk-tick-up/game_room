@@ -1,5 +1,6 @@
 package com.example.gameroom.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,8 +29,10 @@ public class GameRooms {
     private LocalDateTime endTime;
     @Column(name="current_turn")
     private int turn;
+    private boolean is_public;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_room_base_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private GameRoomBase gameRoomBase;
 
 
@@ -39,16 +42,16 @@ public class GameRooms {
         COMPLETED
     }
 
-    @Builder
-    public GameRooms(GameStatus status, LocalDateTime endTime, int turn, int participants,GameRoomBase gameRoomBase) {
-        UUID uuid = UUID.randomUUID();
-        this.id = uuid.toString().substring(0,5).toUpperCase();
-        this.status = status;
-        this.endTime = endTime;
-        this.turn = turn;
-        this.participants = participants;
-        this.gameRoomBase = gameRoomBase;
-    }
+//    @Builder
+//    public GameRooms(GameStatus status, LocalDateTime endTime, int turn, int participants,GameRoomBase gameRoomBase) {
+//        UUID uuid = UUID.randomUUID();
+//        this.id = uuid.toString().substring(0,5).toUpperCase();
+//        this.status = status;
+//        this.endTime = endTime;
+//        this.turn = turn;
+//        this.participants = participants;
+//        this.gameRoomBase = gameRoomBase;
+//    }
 
     public void incrementParticipants() throws Exception {
         if(this.participants < this.gameRoomBase.getMaxPlayer()) {

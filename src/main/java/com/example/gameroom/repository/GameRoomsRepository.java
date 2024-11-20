@@ -10,8 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface GameRoomsRepository extends JpaRepository<GameRooms,String> {
-    List<GameRooms> findByGameRoomBase_GameType(GameRoomBase.GameType gameType);
-    Optional<GameRooms> findByParticipantsLessThanAndGameRoomBase_MaxPlayer(int participants, int maxPlayer);
-    List<GameRooms> findGameRoomsByParticipantsLessThanAndGameRoomBaseMaxPlayer(int participants, int gameRoomBase_maxPlayer);
 
 }

@@ -10,7 +10,7 @@ public record CreateGameRoomsRequest(
         GameRoomBase.GameType gameType,
         String userRole
 ) {
-    public GameRooms toEntity(GameRoomBase gameRoomBase) {
+    public GameRooms toEntityPublic(GameRoomBase gameRoomBase) {
         UUID uuid = UUID.randomUUID();
         String randomCode = uuid.toString().substring(0,5).toUpperCase();
         return GameRooms.builder()
@@ -21,6 +21,22 @@ public record CreateGameRoomsRequest(
                             (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))
                 .turn(0)
                 .gameRoomBase(gameRoomBase)
+                .is_public(true)
                 .build();
     }
+    public GameRooms toEntityPrivate(GameRoomBase gameRoomBase) {
+        UUID uuid = UUID.randomUUID();
+        String randomCode = uuid.toString().substring(0,5).toUpperCase();
+        return GameRooms.builder()
+                .id(randomCode)
+                .participants(1)
+                .status(GameRooms.GameStatus.BEFORE_START)
+                .endTime( LocalDateTime.now().plusMinutes(
+                        (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))
+                .turn(0)
+                .gameRoomBase(gameRoomBase)
+                .is_public(false)
+                .build();
+    }
+
 }
