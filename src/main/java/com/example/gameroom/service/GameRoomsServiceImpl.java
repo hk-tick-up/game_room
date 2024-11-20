@@ -9,6 +9,7 @@ import com.example.gameroom.request.CreateGameRoomsRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -61,22 +62,22 @@ public GameRooms joinPrivateGameRoom(String gameRoomId) {
             throw new IllegalArgumentException("지원하지 않는 방식입니다.");
         }
 
-        Optional<GameRooms> availableRoom = gameRoomsRepository.findAll().stream()
-                .filter(room -> room.getStatus() == GameRooms.GameStatus.BEFORE_START &&
-                        room.getGameRoomBase().getGameType().equals(request.gameType()) &&
-                        room.getParticipants() < room.getGameRoomBase().getMaxPlayer() &&
-                        room.isPublic())
-                .findFirst();
-
-        if(availableRoom.isPresent()) {
-            GameRooms gameRoom = availableRoom.get();
-            gameRoom.incrementParticipants();
-            return gameRoomsRepository.save(gameRoom);
-        }else {
-            GameRoomBase gameRoomBase = gameRoomBaseRepository.findByGameType(request.gameType());
-            GameRooms newGameRoom = request.toEntityPublic(gameRoomBase);
-            return gameRoomsRepository.save(newGameRoom);
+        if (gameRoomType == null) {
+            throw new IllegalArgumentException("지원하지 않는 방식입니다.");
         }
+
+        List<GameRooms> availableRooms = gameRoomsRepository.findExistGameRooms();
+
+        for (GameRooms room : availableRooms) {
+            if (room.getGameRoomBase().getGameType().equals(request.gameType())) {
+                room.incrementParticipants();
+                return gameRoomsRepository.save(room);
+            }
+        }
+
+        GameRoomBase gameRoomBase = gameRoomBaseRepository.findByGameType(request.gameType());
+        GameRooms newGameRoom = request.toEntityPublic(gameRoomBase);
+        return gameRoomsRepository.save(newGameRoom);
     }
 
 
