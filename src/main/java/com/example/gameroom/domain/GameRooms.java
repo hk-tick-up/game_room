@@ -24,8 +24,6 @@ public class GameRooms {
     @Enumerated(EnumType.STRING)
     @Column(name="game_status")
     private GameStatus status;
-    @Column(name="end_time")
-    private LocalDateTime endTime;
     @Column(name="is_public")
     private boolean isPublic;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -39,7 +37,6 @@ public class GameRooms {
         IN_PROGRESS,
         COMPLETED
     }
-
 //    @Builder
 //    public GameRooms(GameStatus status, LocalDateTime endTime, int turn, int participants,GameRoomBase gameRoomBase) {
 //        UUID uuid = UUID.randomUUID();
@@ -58,5 +55,4 @@ public class GameRooms {
         }
         return false;
     }
-
 }

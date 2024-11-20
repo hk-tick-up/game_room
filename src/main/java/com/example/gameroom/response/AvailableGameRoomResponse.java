@@ -9,7 +9,6 @@ public record AvailableGameRoomResponse(
     String gameRoomId,
     int participants,
     GameRooms.GameStatus status,
-    LocalDateTime endTime,
     GameRoomBase gameRoomBase
 
 ) {
@@ -18,7 +17,6 @@ public record AvailableGameRoomResponse(
                 gameRooms.getId(),
                 gameRooms.getParticipants(),
                 gameRooms.getStatus(),
-                gameRooms.getEndTime(),
                 gameRooms.getGameRoomBase()
         );
     }

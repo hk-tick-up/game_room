@@ -17,8 +17,6 @@ public record CreateGameRoomsRequest(
                 .id(randomCode)
                 .participants(1)
                 .status(GameRooms.GameStatus.BEFORE_START)
-                .endTime( LocalDateTime.now().plusMinutes(
-                            (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))
                 .gameRoomBase(gameRoomBase)
                 .isPublic(true)
                 .build();
@@ -30,8 +28,6 @@ public record CreateGameRoomsRequest(
                 .id(randomCode)
                 .participants(1)
                 .status(GameRooms.GameStatus.BEFORE_START)
-                .endTime( LocalDateTime.now().plusMinutes(
-                        (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))
                 .gameRoomBase(gameRoomBase)
                 .isPublic(false)
                 .build();

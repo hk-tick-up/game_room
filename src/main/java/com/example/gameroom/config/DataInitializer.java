@@ -18,10 +18,6 @@ public class DataInitializer {
                 GameRoomBase basicGameRoom = GameRoomBase.builder()
                         .gameType(GameRoomBase.GameType.Basic)
                         .maxPlayer(5)
-                        .timeLimit(300)
-                        .seedMoney(10_000_000)
-                        .companies(5)
-                        .is_active(false)
                         .build();
 
                repository.save(basicGameRoom);
@@ -31,10 +27,6 @@ public class DataInitializer {
                GameRoomBase contestGameRoom = GameRoomBase.builder()
                        .gameType(GameRoomBase.GameType.Contest)
                        .maxPlayer(Integer.MAX_VALUE)
-                       .timeLimit(300)
-                       .seedMoney(10_000_000)
-                       .companies(5)
-                       .is_active(false)
                        .build();
 
                repository.save(contestGameRoom);
