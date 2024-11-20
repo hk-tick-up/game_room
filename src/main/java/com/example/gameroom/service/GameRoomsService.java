@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface GameRoomsService {
-    GameRooms createPrivateGameRoom(CreateGameRoomsRequest request) throws Exception;
-    GameRooms randomMatchingGameSession(CreateGameRoomsRequest request) throws Exception;
-    GameRooms joinPrivateGameRoom(String gameRoomId) throws Exception;
+    GameRooms createPrivateGameRoom(CreateGameRoomsRequest request);
+    GameRooms randomMatchingGameSession(CreateGameRoomsRequest request);
+    GameRooms joinPrivateGameRoom(String gameRoomId);
 }

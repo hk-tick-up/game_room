@@ -1,4 +1,4 @@
-package com.example.gameroom.Config;
+package com.example.gameroom.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;

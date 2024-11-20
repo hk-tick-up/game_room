@@ -1,4 +1,4 @@
-package com.example.gameroom.Response;
+package com.example.gameroom.response;
 
 import com.example.gameroom.domain.GameRoomBase;
 import com.example.gameroom.domain.GameRooms;

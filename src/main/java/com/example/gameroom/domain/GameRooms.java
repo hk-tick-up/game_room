@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Builder
@@ -27,7 +26,8 @@ public class GameRooms {
     private GameStatus status;
     @Column(name="end_time")
     private LocalDateTime endTime;
-    private boolean is_public;
+    @Column(name="is_public")
+    private boolean isPublic;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_room_base_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -51,12 +51,12 @@ public class GameRooms {
 //        this.gameRoomBase = gameRoomBase;
 //    }
 
-    public void incrementParticipants() throws Exception {
+    public boolean incrementParticipants()  {
         if(this.participants < this.gameRoomBase.getMaxPlayer()) {
             this.participants++;
-        } else {
-            throw new Exception("이미 최대 참여자 수입니다.");
+            return true;
         }
+        return false;
     }
 
 }

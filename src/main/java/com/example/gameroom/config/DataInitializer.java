@@ -1,4 +1,4 @@
-package com.example.gameroom.Config;
+package com.example.gameroom.config;
 
 import com.example.gameroom.domain.GameRoomBase;
 import com.example.gameroom.repository.GameRoomBaseRepository;

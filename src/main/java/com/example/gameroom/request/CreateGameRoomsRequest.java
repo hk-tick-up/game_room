@@ -20,7 +20,7 @@ public record CreateGameRoomsRequest(
                 .endTime( LocalDateTime.now().plusMinutes(
                             (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))
                 .gameRoomBase(gameRoomBase)
-                .is_public(true)
+                .isPublic(true)
                 .build();
     }
     public GameRooms toEntityPrivate(GameRoomBase gameRoomBase) {
@@ -33,7 +33,7 @@ public record CreateGameRoomsRequest(
                 .endTime( LocalDateTime.now().plusMinutes(
                         (long) gameRoomBase.getTimeLimit() * gameRoomBase.getTurns()))
                 .gameRoomBase(gameRoomBase)
-                .is_public(false)
+                .isPublic(false)
                 .build();
     }
 
