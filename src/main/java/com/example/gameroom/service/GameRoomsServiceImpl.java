@@ -33,7 +33,7 @@ public class GameRoomsServiceImpl implements GameRoomsService{
         return gameRoomsRepository.save(newGameRoom);
     }
 
-//    private 방 join
+// private 방 join
 public GameRooms joinPrivateGameRoom(String gameRoomId) {
     GameRooms gameRoom = gameRoomsRepository.findById(gameRoomId)
             .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게임방입니다."));
