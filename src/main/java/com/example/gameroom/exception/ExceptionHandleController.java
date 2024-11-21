@@ -4,11 +4,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestControllerAdvice
 public class ExceptionHandleController {
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> exceptionHandler(IllegalArgumentException e){
+    public ResponseEntity<Map<String, String>> exceptionHandler(IllegalArgumentException e){
         e.printStackTrace();
-        return ResponseEntity.badRequest().body(e.getMessage());
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("message", e.getMessage());
+        return ResponseEntity.badRequest().body(errorResponse);
     }
 }
